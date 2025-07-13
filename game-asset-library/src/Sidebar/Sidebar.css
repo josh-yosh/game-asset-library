@@ -69,6 +69,11 @@
 }
 
 .section-title {
+    margin-left: .3em;
+    font-weight: bold;
+}
+
+.section-chevron {
     background: none;
     border: none;
     font-weight: bold;
