@@ -14,6 +14,7 @@
 
 /* When collapsed, slide left by 200px (sidebar width) */
 .sidebar-wrapper.collapsed .sidebar-content {
+    left: 0;
     transform: translateX(-200px);
 }
 
@@ -28,20 +29,22 @@
 
 /* Sidebar panel */
 .sidebar {
-    width: 200px;
+    width: fit-content;
     background-color: var(--color-light);
     padding: 1rem;
-    box-shadow: 1px 1px .3em var(--color-black);
-    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
     font-size: 0.9rem;
     box-sizing: border-box;
+    color: black;
 }
 
 /* Toggle button */
 .sidebar-toggle {
     width: 32px;
     height: 32px;
-    background-color: var(--color-dark);
+    background-color: var(--color-button-blue);
     border: none;
     color: white;
     font-size: 1.2rem;
@@ -59,18 +62,25 @@
 /* Chevron rotation */
 .sidebar-toggle.rotated {
     transform: rotate(180deg);
-    margin-left: -1.5rem;
+    margin-left: 1.5rem;
     transition: margin-left .3s ease-in-out;
 }
 
 /* Section styles */
 .section {
-    margin-bottom: 1rem;
+    margin-bottom: 1.4rem;
 }
 
 .section-title {
+    all: unset;
     margin-left: .3em;
     font-weight: bold;
+    font-size: 16px;
+}
+
+.section-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .section-chevron {
@@ -86,7 +96,8 @@
 
 .link-list {
     list-style: none;
-    padding-left: 1rem;
+    padding-left: 1.5rem;
+    margin: 0;
 }
 
 .link-list li {

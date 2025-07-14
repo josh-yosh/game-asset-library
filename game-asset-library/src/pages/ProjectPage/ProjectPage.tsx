@@ -12,29 +12,65 @@ export default function ProjectPage() {
         <div>
             <h2>{project.title}</h2>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-                {project.models.map(model => {
-                    const modelId = model.id.split('/').pop()
-                    return (
-                        <Link
-                            key={model.id}
-                            to={`/models/${projectId}/${modelId}`}
-                            style={{ textDecoration: 'none' }}
-                        >
-                            <div style={{ border: '1px solid #ccc', padding: '1rem', width: '150px' }}>
-                                {model.thumbnail && (
-                                    <img
-                                        src={`${base}/${model.thumbnail}`}
-                                        alt={model.title}
-                                        style={{ width: '100%', height: '100px', objectFit: 'cover' }}
-                                    />
-                                )}
-                                <p>{model.title}</p>
-                            </div>
-                        </Link>
-                    )
-                })}
-            </div>
+            {/* Models Section */}
+            {project.models.length > 0 && (
+                <div>
+                    <h3 style={{marginLeft: '1rem'}}>3D Models</h3>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                        {project.models.map(model => {
+                            const modelId = model.id.split('/').pop()
+                            return (
+                                <Link
+                                    key={model.id}
+                                    to={`/assets/${projectId}/3d-models/${modelId}`}
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    <div className='card'>
+                                        {model.thumbnail && (
+                                            <img
+                                                src={`${base}/${model.thumbnail}`}
+                                                alt={model.title}
+                                                className='thumbnail-image'
+                                            />
+                                        )}
+                                        <p>{model.title}</p>
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
+                </div>
+            )}
+
+            {/* Concept Art Section */}
+            {project.conceptArt.length > 0 && (
+                <div>
+                    <h3 style={{marginLeft: '1rem'}}>Concept Art</h3>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                        {project.conceptArt.map(art => {
+                            const artId = art.id.split('/').pop()
+                            return (
+                                <Link
+                                    key={art.id}
+                                    to={`/assets/${projectId}/concept-art/${artId}`}
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    <div className='card'>
+                                        {art.thumbnail && (
+                                            <img
+                                                src={`${base}/${art.thumbnail}`}
+                                                alt={art.title}
+                                                className='thumbnail-image'
+                                            />
+                                        )}
+                                        <p>{art.title}</p>
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
