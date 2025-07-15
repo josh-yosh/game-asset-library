@@ -41,13 +41,6 @@ export const projects: Record<string, ProjectEntry> = {
             },
         ],
         conceptArt: [
-            {
-                title: 'Battle Axe Concept',
-                id: 'assets/miscellaneous/concept-art/battle/concept.jpeg',
-                description: 'Initial concept sketch for the stylized battle axe design.',
-                thumbnail: 'assets/miscellaneous/concept-art/battle/concept.jpeg',
-                maxHeight: '100%',
-            },
         ]
     },
 }
