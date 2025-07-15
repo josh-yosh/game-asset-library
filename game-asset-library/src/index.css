@@ -1,68 +1,72 @@
+html {
+    padding: 0px;
+    margin: 0px;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    --color-primary-darkest: #213D57;  /* Deep Navy */
+    --color-primary-darker:  #334C64;  /* Dark Slate */
+    --color-primary:         #475F76;  /* Slate */
+    --color-light:           #C6D1D8;  /* Light Gray-Blue */
+    --color-button-blue:     #2BA9FC;  /* Light Baby Blue */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+    background-color: var(--color-primary);
+    color: white;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family: 'Open Sans', sans-serif; /* Open Sans is the primary font, sans-serif is the fallback */
+    margin: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.card {
+    background: var(--color-light);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 10rem;
+    height: auto;
+    padding: 1rem 1rem 1rem 1rem;
+    color: black;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.thumbnail-image {
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.website-title {
+    all: unset;
+}
+
+.website-title:hover {
+    cursor: pointer;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.website-banner {
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0;
+    margin-bottom: 3rem;
+    background-color: #C6D1D8;
+    color: black;
+}
+
+.content {
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.page-content {
+    min-width: 22rem;
 }
