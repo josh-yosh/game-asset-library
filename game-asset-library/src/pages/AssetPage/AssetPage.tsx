@@ -26,11 +26,11 @@ export default function AssetPage() {
     if (!asset) return <p>Asset not found</p>
 
     // Type guard functions
-    const isModelEntry = (asset: ModelEntry | ConceptArtEntry): asset is ModelEntry => {
+    const isModelEntry = (_asset: ModelEntry | ConceptArtEntry): _asset is ModelEntry => {
         return assetType === '3d-models'
     }
-
-    const isConceptArtEntry = (asset: ModelEntry | ConceptArtEntry): asset is ConceptArtEntry => {
+    
+    const isConceptArtEntry = (_asset: ModelEntry | ConceptArtEntry): _asset is ConceptArtEntry => {
         return assetType === 'concept-art'
     }
 
