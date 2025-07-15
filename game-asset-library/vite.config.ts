@@ -5,4 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/game-asset-library/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three-js': ['three', '@react-three/fiber', '@react-three/drei']
+        }
+      }
+    }
+  }
 })
