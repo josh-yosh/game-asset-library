@@ -60,7 +60,8 @@ const Sidebar = () => {
 
                             {/* 3D Model links */}
                             {openSections[projectKey] && (
-                                <ul className="link-list">
+                                <ul style={{marginBottom: '1rem'}}
+                                className="link-list">
                                     {models.map(({ title, id }) => {
                                         const modelId = id.split('/').pop()
                                         return (
