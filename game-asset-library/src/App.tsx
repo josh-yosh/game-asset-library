@@ -11,10 +11,10 @@ function App() {
   <Router basename={base}>
       <header className="header tiled-background">
         <Link className='website-title' to="/">
-          <h1>Game Asset Library</h1>
+          <h1 className='website-banner'>Game Asset Library</h1>
         </Link>
       </header>
-      <div style={{ display: 'flex' }}>
+      <div className='content'>
         <Sidebar />
         <main className='page'>
           <Routes>

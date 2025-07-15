@@ -3,6 +3,10 @@ export type ModelEntry = {
     id: string
     description?: string
     thumbnail?: string
+    // Canvas parameters
+    background?: string
+    canvasHeight?: string
+    canvasWidth?: string
 }
 
 export type ConceptArtEntry = {
@@ -10,6 +14,8 @@ export type ConceptArtEntry = {
     id: string
     description?: string
     thumbnail?: string
+    // Sizing parameters
+    maxHeight?: string
 }
 
 export type ProjectEntry = {
@@ -28,7 +34,10 @@ export const projects: Record<string, ProjectEntry> = {
                 title: 'Stylized Battle Axe',
                 id: 'assets/miscellaneous/3d-models/axe/axe.glb',
                 description: 'An axe created following Grant Abbitt\'s "Detailed Game Assets" tutorial series.',
-                thumbnail: 'assets/miscellaneous/3d-models/axe/axe.png'
+                thumbnail: 'assets/miscellaneous/3d-models/axe/axe.png',
+                background: '#3f3f3f',
+                canvasHeight: '500px',
+                canvasWidth: '500px',
             },
         ],
         conceptArt: [
@@ -36,7 +45,8 @@ export const projects: Record<string, ProjectEntry> = {
                 title: 'Battle Axe Concept',
                 id: 'assets/miscellaneous/concept-art/battle/concept.jpeg',
                 description: 'Initial concept sketch for the stylized battle axe design.',
-                thumbnail: 'assets/miscellaneous/concept-art/battle/concept.jpeg'
+                thumbnail: 'assets/miscellaneous/concept-art/battle/concept.jpeg',
+                maxHeight: '100%',
             },
         ]
     },

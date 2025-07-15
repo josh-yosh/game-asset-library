@@ -1,3 +1,8 @@
+html {
+    padding: 0px;
+    margin: 0px;
+}
+
 :root {
     --color-primary-darkest: #213D57;  /* Deep Navy */
     --color-primary-darker:  #334C64;  /* Dark Slate */
@@ -6,15 +11,16 @@
     --color-button-blue:     #2BA9FC;  /* Light Baby Blue */
 
     background-color: var(--color-primary);
-    color: #d9ddde;
+    color: white;
 }
 
 body {
     font-family: 'Open Sans', sans-serif; /* Open Sans is the primary font, sans-serif is the fallback */
+    margin: 0;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--color-light);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     position: relative;
@@ -22,6 +28,7 @@ body {
     width: 10rem;
     height: auto;
     padding: 1rem 1rem 1rem 1rem;
+    color: black;
 }
 
 .thumbnail-image {
@@ -39,7 +46,27 @@ body {
 }
 
 .page {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.website-banner {
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0;
+    margin-bottom: 3rem;
+    background-color: #C6D1D8;
+    color: black;
+}
+
+.content {
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.page-content {
+    min-width: 22rem;
 }

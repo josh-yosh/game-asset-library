@@ -5,7 +5,7 @@ const base = import.meta.env.BASE_URL;
 
 export default function HomePage() {
     return (
-        <div>
+        <div className='page-content'>
             <h2>Projects</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 {Object.entries(projects).map(([key, { title, thumbnail }]) => (

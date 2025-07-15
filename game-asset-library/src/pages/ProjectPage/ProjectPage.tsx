@@ -9,7 +9,7 @@ export default function ProjectPage() {
     if (!project) return <p>Project not found</p>
 
     return (
-        <div>
+        <div className='page-content'>
             <h2>{project.title}</h2>
 
             {/* Models Section */}
@@ -33,7 +33,7 @@ export default function ProjectPage() {
                                                 className='thumbnail-image'
                                             />
                                         )}
-                                        <p>{model.title}</p>
+                                        <h4>{model.title}</h4>
                                     </div>
                                 </Link>
                             )
@@ -63,7 +63,7 @@ export default function ProjectPage() {
                                                 className='thumbnail-image'
                                             />
                                         )}
-                                        <p>{art.title}</p>
+                                        <h4>{art.title}</h4>
                                     </div>
                                 </Link>
                             )

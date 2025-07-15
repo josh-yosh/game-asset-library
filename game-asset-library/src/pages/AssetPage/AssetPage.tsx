@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { projects } from '../../assets'
+import { projects, type ConceptArtEntry, type ModelEntry } from '../../assets'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import { Suspense } from 'react'
@@ -25,19 +25,28 @@ export default function AssetPage() {
 
     if (!asset) return <p>Asset not found</p>
 
+    // Type guard functions
+    const isModelEntry = (asset: ModelEntry | ConceptArtEntry): asset is ModelEntry => {
+        return assetType === '3d-models'
+    }
+
+    const isConceptArtEntry = (asset: ModelEntry | ConceptArtEntry): asset is ConceptArtEntry => {
+        return assetType === 'concept-art'
+    }
+
     return (
-        <div>
+        <div className='page-content'>
             <h2>{asset.title}</h2>
             
-            {assetType === '3d-models' ? (
+            {isModelEntry(asset) ? (
                 <>
                     <div style={{ height: '500px' }}>
                         <Canvas
                             camera={{ position: [1, 1, 3], fov: 60 }}
                             style={{
-                                    background: '#3f3f3f',
-                                    height: '500px',
-                                    width: '500px',
+                                    background: asset.background || '#3f3f3f',
+                                    height: asset.canvasHeight || '500px',
+                                    width: asset.canvasWidth || '500px',
                                     border: '1px solid #ccc',
                                     borderRadius: '4px'
                                 }}>
@@ -53,21 +62,21 @@ export default function AssetPage() {
                         <em>Right click to pan, left click to rotate, scroll to zoom</em>
                     </blockquote>
                 </>
-            ) : (
+            ) : isConceptArtEntry(asset) ? (
                 <div style={{ maxWidth: '100%', textAlign: 'center' }}>
                     <img
                         src={`${base}${asset.id}`}
                         alt={asset.title}
                         style={{ 
                             maxWidth: '100%', 
-                            maxHeight: '70vh', 
+                            maxHeight: asset.maxHeight || '100%', 
                             objectFit: 'contain',
                             border: '1px solid #ccc',
                             borderRadius: '4px'
                         }}
                     />
                 </div>
-            )}
+            ): null}
             
             <p>{asset.description}</p>
         </div>

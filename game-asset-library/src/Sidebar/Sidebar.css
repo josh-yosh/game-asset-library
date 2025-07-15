@@ -32,6 +32,7 @@
     width: fit-content;
     background-color: var(--color-light);
     padding: 1rem;
+    padding-right: 1.5rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 8px;
@@ -42,11 +43,11 @@
 
 /* Toggle button */
 .sidebar-toggle {
-    width: 32px;
-    height: 32px;
+    width: 2.2rem;
+    height: 2.2rem;
     background-color: var(--color-button-blue);
     border: none;
-    color: white;
+    color: #033A52;
     font-size: 1.2rem;
     border-radius: 50%;
     cursor: pointer;
