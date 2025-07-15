@@ -48,4 +48,6 @@ cd game-asset-library
 npm install
 cd ..
 
+git branch -D gh-pages
+
 echo "✅ Deployment complete!"
