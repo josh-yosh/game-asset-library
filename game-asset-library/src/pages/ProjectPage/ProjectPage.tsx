@@ -28,7 +28,7 @@ export default function ProjectPage() {
                                     <div className='card'>
                                         {model.thumbnail && (
                                             <img
-                                                src={`${base}/${model.thumbnail}`}
+                                                src={`${base}${model.thumbnail}`}
                                                 alt={model.title}
                                                 className='thumbnail-image'
                                             />

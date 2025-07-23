@@ -13,7 +13,7 @@ export default function HomePage() {
                         <div className='card'>
                             {thumbnail && (
                                 <img
-                                    src={`${base}/${thumbnail}`}
+                                    src={`${base}${thumbnail}`}
                                     alt={title}
                                     className='thumbnail-image'
                                 />
