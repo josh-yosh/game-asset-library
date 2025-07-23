@@ -1,7 +1,7 @@
 # Game Assets Repository
 
 A repository for organizing and displaying video game assets including 3D models and concept art.\
-To view the deployed website visit: [https://jayyosh.github.io/game-asset-library/](https://jayyosh.github.io/game-asset-library/)
+To view the deployed website visit: [www.gameassetlibrary.org](www.gameassetlibrary.org)
 
 ## Quick Start
 
