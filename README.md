@@ -73,6 +73,10 @@ export const projects: Record<string, ProjectEntry> = {
                 background: '#3f3f3f',
                 canvasHeight: '500px',
                 canvasWidth: '500px',
+                cameraPosition: [1, 1, 1],
+                fov: 60,
+                ambientLightIntensity: 1.0,
+                directionalLightPosition: [1, 1, 1],
             },
         ],
         conceptArt: [
@@ -131,5 +135,3 @@ public/assets/
 ```
 
 ---
-
-[Link to github](https://github.com/JayYosh/game-asset-library)
