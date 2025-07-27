@@ -73,6 +73,19 @@ export const projects: Record<string, ProjectEntry> = {
                 ambientLightIntensity: 0.0,
                 directionalLightPosition: [1, 4, 30],
             },
+            {
+                title: 'Low Poly Dinosaur',
+                id: 'assets/miscellaneous/3d-models/low-poly-dinosaur/low-poly-dinosaur.glb',
+                description: 'A modular dungeon ready for game engine import created following Grant Abbitt\'s "Complete Blender Creator 3: Learn 3D Modelling for Beginners" tutorial series.',
+                thumbnail: 'assets/miscellaneous/3d-models/low-poly-dinosaur/low-poly-dinosaur.png',
+                background: '#3f3f3f',
+                canvasHeight: '500px',
+                canvasWidth: '500px',
+                cameraPosition: [20, 10, 20],
+                fov: 60,
+                ambientLightIntensity: 0.0,
+                directionalLightPosition: [1, 4, 30],
+            },
         ],
         conceptArt: [
         ]
