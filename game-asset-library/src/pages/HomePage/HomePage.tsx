@@ -18,7 +18,7 @@ export default function HomePage() {
                                     className='thumbnail-image'
                                 />
                             )}
-                            <h4>{title}</h4>
+                            <h4 className='card-title'>{title}</h4>
                         </div>
                     </Link>
                 ))}

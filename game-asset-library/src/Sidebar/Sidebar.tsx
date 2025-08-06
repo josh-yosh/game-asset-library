@@ -59,32 +59,37 @@ const Sidebar = () => {
                             </Link>
 
                             {/* 3D Model links */}
-                            {openSections[projectKey] && (
-                                <ul style={{marginBottom: '1rem'}}
-                                className="link-list">
-                                    {models.map(({ title, id }) => {
-                                        const modelId = id.split('/').pop()
-                                        return (
-                                            <li key={id}>
-                                                <Link to={`/assets/${projectKey}/3d-models/${modelId}`}>{title}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
+                            {openSections[projectKey] && models.length > 0 && (
+                                <div style={{ marginBottom: '1rem' }}>
+                                    <h4 className="subsection-title">3D Models</h4>
+                                    <ul className="link-list">
+                                        {models.map(({ title, id }) => {
+                                            const modelId = id.split('/').pop()
+                                            return (
+                                                <li key={id}>
+                                                    <Link to={`/assets/${projectKey}/3d-models/${modelId}`}>{title}</Link>
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
                             )}
 
                             {/* Concept Art links */}
                             {openSections[projectKey] && (
-                                <ul className="link-list">
-                                    {conceptArt.map(({ title, id }) => {
-                                        const modelId = id.split('/').pop()
-                                        return (
-                                            <li key={id}>
-                                                <Link to={`/assets/${projectKey}/concept-art/${modelId}`}>{title}</Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
+                                <div>
+                                    <h4 className="subsection-title">Concept Art</h4>
+                                    <ul className="link-list">
+                                        {conceptArt.map(({ title, id }) => {
+                                            const modelId = id.split('/').pop()
+                                            return (
+                                                <li key={id}>
+                                                    <Link to={`/assets/${projectKey}/concept-art/${modelId}`}>{title}</Link>
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
                             )}
                         </div>
                     ))}

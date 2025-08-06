@@ -33,7 +33,7 @@ export default function ProjectPage() {
                                                 className='thumbnail-image'
                                             />
                                         )}
-                                        <h4>{model.title}</h4>
+                                        <h4 className='card-title'>{model.title}</h4>
                                     </div>
                                 </Link>
                             )
@@ -63,7 +63,7 @@ export default function ProjectPage() {
                                                 className='thumbnail-image'
                                             />
                                         )}
-                                        <h4>{art.title}</h4>
+                                        <h4 className='card-title'>{art.title}</h4>
                                     </div>
                                 </Link>
                             )

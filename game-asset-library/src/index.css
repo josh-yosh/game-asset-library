@@ -55,7 +55,7 @@ body {
 }
 
 .description {
-    max-width: 30rem;
+    font-size: 17px;
 }
 
 .card {
@@ -70,34 +70,50 @@ body {
     margin-bottom: 5em;
 }
 
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 1rem 0 0.5rem 0;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+}
+
 .thumbnail-image {
     width: 100%;
     height: fit-content;
     border-radius: 10px;
 }
 
+/* Website Banner */
 .website-title {
     all: unset;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
 }
 
 .website-title:hover {
     cursor: pointer;
-}
-
-.page {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    opacity: 0.8;
 }
 
 .website-banner {
     text-align: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding: 3rem 2rem;
     margin: 0;
     margin-bottom: 3rem;
     background-color: #C6D1D8;
     color: black;
+}
+
+/* Website Banner END */
+
+.page {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    flex-direction: column;
 }
 
 .content {
@@ -108,5 +124,5 @@ body {
 
 .page-content {
     width: 100%;
-    max-width: 200rem;
+    max-width: 50rem;
 }
