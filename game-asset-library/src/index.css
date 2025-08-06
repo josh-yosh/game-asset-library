@@ -19,16 +19,55 @@ body {
     margin: 0;
 }
 
+.canvas {
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Needed to prevent constant growing of size */
+    border-radius: 4px;
+}
+
+.page-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #e2e8f0;
+}
+
+.page-subheader {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-light);
+    position: relative;
+}
+
+.page-subheader::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1.2em;
+    background-color: #3182ce;
+    border-radius: 2px;
+}
+
+.description {
+    max-width: 30rem;
+}
+
 .card {
     background: var(--color-light);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 10rem;
     height: auto;
     padding: 1rem 1rem 1rem 1rem;
     color: black;
+    margin-bottom: 5em;
 }
 
 .thumbnail-image {
@@ -68,5 +107,6 @@ body {
 }
 
 .page-content {
-    min-width: 22rem;
+    width: 100%;
+    max-width: 200rem;
 }

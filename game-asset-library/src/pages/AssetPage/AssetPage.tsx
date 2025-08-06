@@ -36,20 +36,21 @@ export default function AssetPage() {
 
     return (
         <div className='page-content'>
-            <h2>{asset.title}</h2>
+            <h2 className='page-header'>{asset.title}</h2>
 
             {isModelEntry(asset) ? (
                 <>
-                    <div style={{ height: '500px' }}>
+                    <div style={{ height: '500px', width: '100%'}}>
                         <Canvas
+                            key={asset.id} // This recreates the entire Canvas so camera orientation resets
                             camera={{ position: asset.cameraPosition || [1, 1, 3], fov: asset.fov || 60 }}
                             style={{
                                 background: asset.background || '#3f3f3f',
                                 height: asset.canvasHeight || '500px',
                                 width: asset.canvasWidth || '500px',
-                                border: '1px solid #ccc',
-                                borderRadius: '4px'
-                            }}>
+                            }}
+                            className='canvas'
+                            >
                             <ambientLight intensity={asset.ambientLightIntensity || 1.0} />
                             <directionalLight position={asset.directionalLightPosition || [1, 1, 10]} />
                             <Suspense fallback={null}>
@@ -63,22 +64,26 @@ export default function AssetPage() {
                     </blockquote>
                 </>
             ) : isConceptArtEntry(asset) ? (
-                <div style={{ maxWidth: '100%', textAlign: 'center' }}>
-                    <img
-                        src={`${base}${asset.id}`}
-                        alt={asset.title}
-                        style={{
-                            maxWidth: '100%',
-                            maxHeight: asset.maxHeight || '100%',
-                            objectFit: 'contain',
-                            border: '1px solid #ccc',
-                            borderRadius: '4px'
-                        }}
-                    />
-                </div>
+                <>
+                    <div style={{ maxWidth: '100%', textAlign: 'center' }}>
+                        <embed
+                            src={`${base}${asset.id}`}
+                            type="application/pdf"
+                            width={asset.width || '100%'}
+                            height={asset.maxHeight || '600px'}
+                            style={{
+                                border: '1px solid #ccc',
+                                borderRadius: '4px'
+                            }}
+                        />
+                    </div>
+                    <blockquote>
+                        <em>Ctrl + scroll to zoom</em>
+                    </blockquote>
+                </>
             ) : null}
 
-            <p>{asset.description}</p>
+            <p className='description'>{asset.description}</p>
         </div>
     )
 }

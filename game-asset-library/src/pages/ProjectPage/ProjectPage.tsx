@@ -10,12 +10,12 @@ export default function ProjectPage() {
 
     return (
         <div className='page-content'>
-            <h2>{project.title}</h2>
+            <h2 className='page-header'>{project.title}</h2>
 
             {/* Models Section */}
             {project.models.length > 0 && (
                 <div>
-                    <h3 style={{marginLeft: '1rem'}}>3D Models</h3>
+                    <h3 className='page-subheader'>3D Models</h3>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                         {project.models.map(model => {
                             const modelId = model.id.split('/').pop()
@@ -45,7 +45,7 @@ export default function ProjectPage() {
             {/* Concept Art Section */}
             {project.conceptArt.length > 0 && (
                 <div>
-                    <h3 style={{marginLeft: '1rem'}}>Concept Art</h3>
+                    <h3 className='page-subheader'>Concept Art</h3>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                         {project.conceptArt.map(art => {
                             const artId = art.id.split('/').pop()
@@ -58,7 +58,7 @@ export default function ProjectPage() {
                                     <div className='card'>
                                         {art.thumbnail && (
                                             <img
-                                                src={`${base}/${art.thumbnail}`}
+                                                src={`${base}${art.thumbnail}`}
                                                 alt={art.title}
                                                 className='thumbnail-image'
                                             />
