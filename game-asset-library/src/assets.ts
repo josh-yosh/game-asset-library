@@ -5,6 +5,7 @@ export type ModelEntry = {
     thumbnail?: string
     // Canvas parameters
     background?: string
+    environment?: string
     canvasHeight?: string
     canvasWidth?: string
     cameraPosition?: [number, number, number]
@@ -35,6 +36,20 @@ export const projects: Record<string, ProjectEntry> = {
         title: 'Miscellaneous',
         thumbnail: 'assets/miscellaneous/miscellaneous-thumbnail.png',
         models: [
+            {
+                title: 'Spitfire Airplane',
+                id: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.glb',
+                description: 'A spitfire airplane flying over a city ready for game engine import created following Grant Abbitt\'s "Complete Blender Creator 3: Learn 3D Modelling for Beginners" tutorial series.',
+                thumbnail: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.png',
+                background: '#3f3f3f',
+                environment: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.exr',
+                canvasHeight: '500px',
+                canvasWidth: '100%',
+                cameraPosition: [8, 1, 18],
+                fov: 60,
+                ambientLightIntensity: 2.0,
+                directionalLightPosition: [5, 0, 16],
+            },
             {
                 title: 'Stylized Battle Axe',
                 id: 'assets/miscellaneous/3d-models/axe/axe.glb',

@@ -1,17 +1,106 @@
 import { useParams } from 'react-router-dom'
 import { projects, type ConceptArtEntry, type ModelEntry } from '../../assets'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, useGLTF } from '@react-three/drei'
-import { Suspense } from 'react'
+import { Environment, OrbitControls, useAnimations, useGLTF } from '@react-three/drei'
+import { Suspense, useEffect, useRef, useState } from 'react'
+import type { Group } from 'three'
 
-function Model({ url }: { url: string }) {
-    const { scene } = useGLTF(url)
-    return <primitive object={scene} />
+function Loader() {
+    return (
+        <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            zIndex: 10
+        }}>
+            <div style={{
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                padding: 'clamp(16px, 4vw, 32px)',
+                borderRadius: '8px',
+                textAlign: 'center',
+                maxWidth: 'clamp(280px, 80vw, 400px)',
+                margin: '0 16px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
+            }}>
+                <div style={{
+                    color: 'white',
+                    fontSize: 'clamp(14px, 3vw, 20px)',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    fontWeight: '500',
+                    lineHeight: '1.4'
+                }}>
+                    Loading 3D Model...
+                </div>
+
+                <div style={{
+                    marginTop: '16px'
+                }}>
+                    <div style={{
+                        display: 'inline-block',
+                        width: 'clamp(20px, 4vw, 32px)',
+                        height: 'clamp(20px, 4vw, 32px)',
+                        border: '2px solid transparent',
+                        borderTop: '2px solid white',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite'
+                    }}></div>
+                </div>
+            </div>
+            <style>{`
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `}</style>
+        </div>
+    );
+}
+
+
+function Model({ url, onLoaded }: { url: string, onLoaded?: () => void }) {
+    const group = useRef<Group>(null)
+    const { scene, animations } = useGLTF(url)
+    const { actions, mixer } = useAnimations(animations, group)
+
+    useEffect(() => {
+        // Auto-play all animations if they exist
+        if (actions && Object.keys(actions).length > 0) {
+            Object.values(actions).forEach((action) => {
+                action?.reset()
+                action?.play()
+            })
+        }
+
+        // Call onLoaded when model is ready
+        if (onLoaded) {
+            onLoaded()
+        }
+
+        // Cleanup function
+        return () => {
+            if (mixer) {
+                mixer.stopAllAction()
+            }
+        }
+    }, [actions, mixer, onLoaded])
+
+    return (
+        <group ref={group}>
+            <primitive object={scene} />
+        </group>
+    )
 }
 
 export default function AssetPage() {
     const { projectId, assetType, assetId } = useParams()
     const base = import.meta.env.BASE_URL
+    const [isLoading, setIsLoading] = useState(true)
 
     const project = projects[projectId || '']
     if (!project) return <p>Project not found</p>
@@ -24,6 +113,11 @@ export default function AssetPage() {
     }
 
     if (!asset) return <p>Asset not found</p>
+
+    // Reset loading state when asset changes
+    useEffect(() => {
+        setIsLoading(true)
+    }, [asset.id])
 
     // Type guard functions
     const isModelEntry = (_asset: ModelEntry | ConceptArtEntry): _asset is ModelEntry => {
@@ -40,7 +134,8 @@ export default function AssetPage() {
 
             {isModelEntry(asset) ? (
                 <>
-                    <div style={{ height: '500px', width: '100%'}}>
+                    <div style={{ height: '500px', width: '100%', position: 'relative'}}>
+                        {isLoading && <Loader />}
                         <Canvas
                             key={asset.id} // This recreates the entire Canvas so camera orientation resets
                             camera={{ position: asset.cameraPosition || [1, 1, 3], fov: asset.fov || 60 }}
@@ -50,11 +145,14 @@ export default function AssetPage() {
                                 width: asset.canvasWidth || '500px',
                             }}
                             className='canvas'
-                            >
+                        >
                             <ambientLight intensity={asset.ambientLightIntensity || 1.0} />
                             <directionalLight position={asset.directionalLightPosition || [1, 1, 10]} />
                             <Suspense fallback={null}>
-                                <Model url={`${base}${asset.id}`} />
+                                <Model url={`${base}${asset.id}`} onLoaded={() => setIsLoading(false)} />
+                                {asset.environment && (
+                                    <Environment files={`${base}${asset.environment}`} background />
+                                )}
                             </Suspense>
                             <OrbitControls />
                         </Canvas>
