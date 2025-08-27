@@ -101,6 +101,7 @@ export default function AssetPage() {
     const { projectId, assetType, assetId } = useParams()
     const base = import.meta.env.BASE_URL
     const [isLoading, setIsLoading] = useState(true)
+    const controlsRef = useRef<any>(null)
 
     const project = projects[projectId || '']
     if (!project) return <p>Project not found</p>
@@ -126,6 +127,20 @@ export default function AssetPage() {
 
     const isConceptArtEntry = (_asset: ModelEntry | ConceptArtEntry): _asset is ConceptArtEntry => {
         return assetType === 'concept-art'
+    }
+
+    const resetCamera = () => {
+        if (controlsRef.current && isModelEntry(asset)) {
+            // Reset camera position
+            const defaultPosition = asset.cameraPosition || [1, 1, 3]
+            controlsRef.current.object.position.set(...defaultPosition)
+            
+            // Reset target to origin
+            controlsRef.current.target.set(0, 0, 0)
+            
+            // Update controls
+            controlsRef.current.update()
+        }
     }
 
     return (
@@ -154,8 +169,35 @@ export default function AssetPage() {
                                     <Environment files={`${base}${asset.environment}`} background />
                                 )}
                             </Suspense>
-                            <OrbitControls />
+                            <OrbitControls ref={controlsRef} />
                         </Canvas>
+                        
+                        <button 
+                            onClick={resetCamera}
+                            style={{
+                                position: 'absolute',
+                                top: '10px',
+                                right: '10px',
+                                background: 'rgba(0, 0, 0, 0.7)',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                padding: '8px 12px',
+                                cursor: 'pointer',
+                                fontSize: '12px',
+                                fontFamily: 'system-ui, -apple-system, sans-serif',
+                                transition: 'background-color 0.2s ease',
+                                zIndex: 5
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.9)'
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'
+                            }}
+                        >
+                            Reset Camera
+                        </button>
                     </div>
                     <blockquote>
                         <em>Right click to pan, left click to rotate, scroll to zoom</em>
