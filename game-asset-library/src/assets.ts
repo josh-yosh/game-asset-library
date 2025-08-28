@@ -56,7 +56,7 @@ export const projects: Record<string, ProjectEntry> = {
                 description: 'A spitfire airplane flying over a city ready for game engine import created following Grant Abbitt\'s "Complete Blender Creator 3: Learn 3D Modelling for Beginners" tutorial series.',
                 thumbnail: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.png',
                 background: '#3f3f3f',
-                environment: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.exr',
+                environment: 'assets/miscellaneous/3d-models/spitfire-airplane/spitfire-airplane.hdr',
                 canvasHeight: '500px',
                 canvasWidth: '100%',
                 cameraPosition: [8, 1, 18],
