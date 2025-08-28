@@ -37,11 +37,18 @@ export const projects: Record<string, ProjectEntry> = {
         thumbnail: 'assets/miscellaneous/miscellaneous-thumbnail.png',
         models: [
             {
+                title: 'Cartoon Head',
+                id: 'assets/miscellaneous/3d-models/cartoon-head/cartoon-head.glb',
+                description: 'A stylized high-poly villain head sculpt ready created following Grant Abbitt\'s "Complete Blender Creator 3: Learn 3D Modelling for Beginners" tutorial series.',
+                thumbnail: 'assets/miscellaneous/3d-models/cartoon-head/cartoon-head.png',
+                cameraPosition: [3, 0, 4],
+            },
+            {
                 title: 'TV Man',
                 id: 'assets/miscellaneous/3d-models/tv-man/tv-man.glb',
                 description: 'A cartoon tv man in a walk cycle ready for game engine import created following Grant Abbitt\'s "Complete Blender Creator 3: Learn 3D Modelling for Beginners" tutorial series.',
                 thumbnail: 'assets/miscellaneous/3d-models/tv-man/tv-man.png',
-                cameraPosition: [8, 1, 18],
+                cameraPosition: [12, 4, 10],
             },
             {
                 title: 'Spitfire Airplane',
